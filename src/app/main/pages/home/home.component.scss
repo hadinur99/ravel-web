@@ -1,20 +1,11 @@
-// .hero {
-//   position: relative;
-
-//   &__overlay-text {
-//     position: absolute;
-//   }
-// }
-
-// .hero > img,
-// .overlay-text {
-//   position: absolute;
-// }
-
-// .overlay-text {
-//   padding: 150px 50px;
-// }
-
 .img-hero {
   width: -webkit-fill-available;
+}
+
+.btn-custom {
+  background-color: #4bff72;
+  border-radius: 15px;
+  width: 150px;
+  height: 50px;
+  border: none;
 }

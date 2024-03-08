@@ -6,15 +6,6 @@ $primaryColor: #4bff72;
   color: $primaryColor;
 }
 
-.btn-custom {
-  color: white;
-  background-color: $primaryColor;
-
-  &:hover {
-    background-color: $primaryColor;
-  }
-}
-
 .tour-image {
   width: 100%;
   height: 200px; /* You can adjust the height as needed */
