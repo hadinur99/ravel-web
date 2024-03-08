@@ -1,0 +1,38 @@
+.box {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.card {
+  border-radius: 20px;
+  margin: 10px;
+  width: calc(33.333% - 20px); /* Adjust width as needed */
+  border: 1px solid #000;
+}
+
+@media screen and (max-width: 767px) {
+  .card {
+    width: calc(100% - 20px); /* Adjust width for mobile devices */
+  }
+}
+
+.box-round {
+  border-radius: 25px;
+  background-color: #ffffff;
+  padding: 10px;
+}
+
+.box-round__flex {
+  display: flex;
+}
+
+.box-round__img {
+  flex: 0 0 auto;
+  margin-right: 15px;
+}
+
+.box-round__content {
+  flex: 1 1 auto;
+}
+
+/* Add more styles for name, description, and stars as needed */

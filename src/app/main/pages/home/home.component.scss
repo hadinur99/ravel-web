@@ -1,0 +1,20 @@
+// .hero {
+//   position: relative;
+
+//   &__overlay-text {
+//     position: absolute;
+//   }
+// }
+
+// .hero > img,
+// .overlay-text {
+//   position: absolute;
+// }
+
+// .overlay-text {
+//   padding: 150px 50px;
+// }
+
+.img-hero {
+  width: -webkit-fill-available;
+}

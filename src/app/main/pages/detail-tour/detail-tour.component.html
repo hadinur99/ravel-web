@@ -1,0 +1,24 @@
+<div *ngIf="isLoading" class="spinner-border" role="status">
+  <span class="sr-only"></span>
+</div>
+<section *ngIf="data" class="py-5">
+  <div class="text-center">
+    <h1 class="primary">{{ data?.name }}</h1>
+    <h2>{{ data?.slug }}</h2>
+  </div>
+
+  <div>
+    <img src="{{ data?.image }}" alt="foto" class="tour-image" />
+  </div>
+  <div class="py-3 text-center">
+    <span
+      >{{ data?.name }}, <span class="primary">{{ data?.slug }}</span></span
+    >
+    <div>
+      <p>{{ data?.description }}</p>
+    </div>
+    <div>
+      <b>Mulai dari: Rp. {{ data?.price }}</b>
+    </div>
+  </div>
+</section>

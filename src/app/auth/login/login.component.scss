@@ -1,0 +1,23 @@
+.login {
+  height: 100vh;
+}
+.box {
+  top: 200px;
+  position: relative;
+  flex-direction: row;
+  max-width: 1000px;
+  margin: auto;
+  /* height: 700px; */
+  //   padding: 15px;
+
+  &__form {
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+      rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    margin: 25px;
+    max-width: 400px;
+  }
+}
+
+.img-bg {
+  width: 450px;
+}

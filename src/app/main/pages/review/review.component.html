@@ -1,0 +1,30 @@
+<section class="py-5">
+  <h1 class="text-center">Semua Testimoni Kami</h1>
+
+  <div class="box">
+    <div *ngFor="let item of testimonies; let i = index" class="card">
+      <div class="box-round">
+        <div class="box-round__flex">
+          <div class="box-round__img">
+            <img src="../../../../assets//images/avatar.png" alt="img" />
+          </div>
+          <div class="box-round__content">
+            <div [attr.data-cy]="'t-name-' + i" class="name">
+              {{ item.name }}
+            </div>
+            <div [attr.data-cy]="'t-comment-' + i" class="comment">
+              {{ item.rateComment }}
+            </div>
+            <div [attr.data-cy]="'t-rating-' + i" class="stars">
+              {{ item.applicationRate }}
+            </div>
+            <ng-container *ngFor="let star of getStars(item.applicationRate)">
+              <!-- <i class="fa-sharp fa-regular fa-star"></i> -->
+              <i class="fas fa-star" style="color: #ffa534"></i>
+            </ng-container>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

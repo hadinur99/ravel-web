@@ -1,0 +1,73 @@
+<section class="py-5 custom-width">
+  <div style="max-width: 80%">
+    <div class="text-center">
+      <h1>
+        Halo, <span class="primary">{{ name }}</span>
+      </h1>
+      <h2>Kemana Kau Ingin Pergi?</h2>
+    </div>
+    <div class="search-box">
+      <form (ngSubmit)="onSearch()" class="input-group mb-3">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Find Tour"
+          [(ngModel)]="searchInput"
+          name="searchInput"
+        />
+        <div class="input-group-append">
+          <button class="btn btn-outline-secondary" type="submit">
+            Search
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<section class="container">
+  <div class="row"><h2>Hasil Pencarianmu:</h2></div>
+  <div
+    data-cy="search-error-text"
+    class="text-danger"
+    *ngIf="!toursData.length"
+  >
+    Hasil pencarian tidak ditemukan. Silakan ganti kata kunci!
+  </div>
+  <div *ngIf="isLoading" class="spinner-border" role="status">
+    <span class="sr-only"></span>
+  </div>
+  <div
+    class="row tour-card py-2"
+    *ngFor="let item of toursData; let i = index"
+    [routerLink]="['/destinasi-wisata', item._id]"
+  >
+    <div class="col-md-3">
+      <div class="card">
+        <img
+          [attr.data-cy]="'tour-image-' + i"
+          class="tour-image"
+          src="{{ item.image }}"
+          alt="photo"
+          loading="lazy"
+        />
+      </div>
+    </div>
+    <div class="col-md-8 lh-2">
+      <div>
+        <span [attr.data-cy]="'tour-title-' + i">{{ item.name }}</span
+        >,
+        <span [attr.data-cy]="'tour-slug-' + i" class="primary">{{
+          item.slug
+        }}</span>
+      </div>
+      <div [attr.data-cy]="'tour-desc-' + i">{{ item.description }}</div>
+      <div class="row">
+        <b [attr.data-cy]="'tour-price-' + i"
+          >Mulai dari: Rp. {{ item.price }}</b
+        >
+      </div>
+    </div>
+    <hr />
+  </div>
+</section>
