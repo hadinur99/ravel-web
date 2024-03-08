@@ -3,10 +3,11 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Login, Register } from '../_helpers/_models/data';
+import { environment } from 'src/environments/environment';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
-  private BASE_URL = 'https://bio-testservice.digital-healthcare.id/api/v1/';
+  private BASE_URL = environment.url;
 
   constructor(private router: Router, private http: HttpClient) {}
 

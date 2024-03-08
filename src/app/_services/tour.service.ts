@@ -1,12 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class TourService {
-  private BASE_URL = 'https://bio-testservice.digital-healthcare.id/api/v1/';
+  private BASE_URL = environment.url;
 
   constructor(private http: HttpClient) {}
 
