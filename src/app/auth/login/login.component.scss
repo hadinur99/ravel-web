@@ -34,3 +34,11 @@
 .img-bg {
   width: 450px;
 }
+
+:host ::ng-deep {
+  .toast {
+    background-color: red;
+    width: 300px;
+    height: 80px;
+  }
+}

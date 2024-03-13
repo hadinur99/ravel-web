@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import { TourData } from 'src/app/_helpers/_models/data';
+import { TourData, Data } from 'src/app/_helpers/_models/data';
 import { Storage } from 'src/app/_helpers/utils';
 import { TourService } from 'src/app/_services/tour.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
@@ -17,7 +17,7 @@ export class FindTourComponent implements OnInit {
 
   isLoading = false;
 
-  toursData!: Array<TourData>;
+  toursData: Array<TourData> = [];
 
   searchInput: string = '';
 
@@ -44,7 +44,20 @@ export class FindTourComponent implements OnInit {
       .pipe(takeUntil(this.$ngUnsubscribe))
       .subscribe({
         next: (res) => {
-          const { data } = res;
+          const { data }: Data = res;
+          data.forEach((item: any) => {
+            if (item.price) {
+              // Create a number formatter for the user's locale
+              let formatter = new Intl.NumberFormat('id-ID', {
+                style: 'currency',
+                currency: 'IDR',
+              });
+
+              // Format the price value
+              const formattedPrice = formatter.format(item.price);
+              item.price = formattedPrice;
+            }
+          });
           this.toursData = data;
           this.isLoading = false;
         },

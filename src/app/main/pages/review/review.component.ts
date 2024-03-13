@@ -13,6 +13,8 @@ import { ModalComponent } from '../../components/modal/modal.component';
 export class ReviewComponent implements OnInit {
   testimonies: any = [];
 
+  isLoading = true;
+
   private $ngUnsubscribe = new Subject();
 
   constructor(
@@ -28,9 +30,11 @@ export class ReviewComponent implements OnInit {
         next: (res) => {
           const { data } = res;
           this.testimonies = data;
+          this.isLoading = false;
         },
         error: (err) => {
           const errMsg = err?.error?.message;
+          this.isLoading = false;
 
           // Open error modal
           const modalRef = this.modalService.open(ModalComponent);

@@ -9,6 +9,12 @@ export interface Register {
   password: string;
 }
 
+export interface Data {
+  data: Array<TourData>;
+  results: number;
+  status: string;
+}
+
 export interface TourData {
   _id: string;
   name: string;

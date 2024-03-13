@@ -9,6 +9,12 @@ import { ReviewComponent } from './pages/review/review.component';
 import { DetailTourComponent } from './pages/detail-tour/detail-tour.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ModalComponent } from './components/modal/modal.component';
+import {
+  NgbNavModule,
+  NgbToastModule,
+  NgbTooltipModule,
+} from '@ng-bootstrap/ng-bootstrap';
+// import { ToastComponent } from './components/toast/toast.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +24,16 @@ import { ModalComponent } from './components/modal/modal.component';
     ReviewComponent,
     DetailTourComponent,
     ModalComponent,
+    // ToastComponent,
   ],
-  imports: [CommonModule, MainRoutingModule, FormsModule, ReactiveFormsModule],
+  imports: [
+    CommonModule,
+    MainRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    NgbNavModule,
+    NgbTooltipModule,
+    NgbToastModule,
+  ],
 })
 export class MainModule {}

@@ -1,0 +1,12 @@
+<ng-container *ngIf="showToast">
+  <ngb-toast
+    [autohide]="true"
+    (hidden)="showToast = false"
+    class="toast-container position-fixed top-0 end-0 p-3"
+    [delay]="3000"
+  >
+    <span style="color: #fff; font-size: 18px; font-weight: 500">{{
+      errorMessage
+    }}</span>
+  </ngb-toast>
+</ng-container>

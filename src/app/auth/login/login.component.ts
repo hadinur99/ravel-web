@@ -22,6 +22,8 @@ export class LoginComponent implements OnInit {
   isLoading = false;
   errorMessage = '';
 
+  showToast = false;
+
   constructor(
     private formBuilder: FormBuilder,
     private authService: AuthService,
@@ -60,12 +62,14 @@ export class LoginComponent implements OnInit {
           const { name, accessToken } = res?.data;
           this.storeUserData(name, accessToken);
           this.isLoading = false;
+          this.showToast = true;
           this.router.navigateByUrl('/');
         },
         error: (err) => {
           const errMsg = err?.error?.message;
           this.errorMessage = errMsg;
           this.isLoading = false;
+          this.showToast = true;
         },
       });
   }
