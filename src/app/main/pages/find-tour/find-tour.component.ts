@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
+import { debounceTime, takeUntil } from 'rxjs/operators';
 import { TourData, Data } from 'src/app/_helpers/_models/data';
 import { Storage } from 'src/app/_helpers/utils';
 import { TourService } from 'src/app/_services/tour.service';
@@ -19,6 +19,7 @@ export class FindTourComponent implements OnInit {
 
   toursData: Array<TourData> = [];
 
+  private searchSubject = new Subject<string>();
   searchInput: string = '';
 
   private $ngUnsubscribe = new Subject();
@@ -31,10 +32,13 @@ export class FindTourComponent implements OnInit {
   ngOnInit(): void {
     this.name = Storage.getItem('username');
     this.doSearch('');
+    this.searchSubject.pipe(debounceTime(500)).subscribe((value) => {
+      this.doSearch(value);
+    });
   }
 
   onSearch() {
-    this.doSearch(this.searchInput);
+    this.searchSubject.next(this.searchInput);
   }
 
   doSearch(key: string) {
