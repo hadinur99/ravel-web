@@ -1,4 +1,4 @@
-import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {
   FormBuilder,
   FormControl,
@@ -9,7 +9,6 @@ import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { AuthService } from 'src/app/_services/auth.service';
-import { ToastService } from 'src/app/_services/toast.service';
 
 @Component({
   selector: 'login',
@@ -27,8 +26,7 @@ export class LoginComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private authService: AuthService,
-    private router: Router,
-    private toastService: ToastService
+    private router: Router
   ) {}
 
   $unSubscribe = new Subject();
@@ -44,13 +42,6 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  storeUserData(name: string, accessToken: string) {
-    const username = JSON.stringify(name);
-    const token = JSON.stringify(accessToken);
-    localStorage.setItem('username', username);
-    localStorage.setItem('Bearer', token);
-  }
-
   onSubmit() {
     this.isLoading = true;
     const payload = this.loginForm.value;
@@ -60,7 +51,7 @@ export class LoginComponent implements OnInit {
       .subscribe({
         next: (res) => {
           const { name, accessToken } = res?.data;
-          this.storeUserData(name, accessToken);
+          this.authService.storeUserData(name, accessToken);
           this.isLoading = false;
           this.showToast = true;
           this.router.navigateByUrl('/');

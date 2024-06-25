@@ -15,20 +15,20 @@ export class AuthInterceptorService implements HttpInterceptor {
   constructor() {}
 
   intercept(
-    req: HttpRequest<any>,
+    request: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
     const bearerToken = Storage.getItem('Bearer');
 
     // If Bearer token exists, append it to the headers of the HTTP request
     if (bearerToken) {
-      req = req.clone({
+      request = request.clone({
         setHeaders: {
           Authorization: `Bearer ${bearerToken}`,
         },
       });
     }
 
-    return next.handle(req);
+    return next.handle(request);
   }
 }

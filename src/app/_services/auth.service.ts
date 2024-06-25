@@ -11,6 +11,13 @@ export class AuthService {
 
   constructor(private router: Router, private http: HttpClient) {}
 
+  storeUserData(name: string, accessToken: string) {
+    const username = JSON.stringify(name);
+    const token = JSON.stringify(accessToken);
+    localStorage.setItem('username', username);
+    localStorage.setItem('Bearer', token);
+  }
+
   login(payload: Login): Observable<any> {
     let loadUrl = this.BASE_URL + 'auam/login';
     return this.http.post(loadUrl, payload);
